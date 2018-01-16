@@ -4,8 +4,23 @@
              xmlns:local="clr-namespace:ToDoList"
              x:Class="ToDoList.MainPage">
 
-	<Label Text="Welcome to Xamarin.Forms!" 
-           VerticalOptions="Center" 
-           HorizontalOptions="Center" />
+    <StackLayout Margin="20" VerticalOptions="StartAndExpand">
+        <Button Text="Add Note" Clicked="OnItemAdded"/>
+        <Label Text="TO-DO List" VerticalOptions="Center" HorizontalOptions="Center" />
+        <Label x:Name="ItemsCount" VerticalOptions="Center"></Label>
+        <ListView x:Name="ToDoItemsListView" Margin="20" ItemSelected="OnListItemSelected">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Margin="20,0,0,0" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                            <Label Text="{Binding Name}" VerticalTextAlignment="Center" HorizontalOptions="StartAndExpand" />
+                            <Label Text="DONE" HorizontalOptions="End" IsVisible="{Binding Done}" />
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+    </StackLayout>
 
 </ContentPage>

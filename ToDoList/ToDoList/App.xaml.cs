@@ -30,5 +30,17 @@ namespace ToDoList
 		{
 			// Handle when your app resumes
 		}
-	}
+        private static TodoItemDatabase _database;
+        public static TodoItemDatabase Database
+        {
+            get
+            {
+                if (_database == null)
+                {
+                    _database = new TodoItemDatabase(DependencyService.Get<IFileHelper>().GetLocalFilePath("TodoSQLite.db3"));
+                }
+                return _database;
+            }
+        }
+    }
 }
