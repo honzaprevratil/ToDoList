@@ -10,6 +10,18 @@
             <Entry Text="{Binding Text}" />
             <Label Text="Done" />
             <Switch IsToggled="{Binding Done}" />
+            <Label Text="Category" />
+            <ListView x:Name="CategoryListView" Margin="20">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Margin="20,0,0,0" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                <Label Text="{Binding Name}" VerticalTextAlignment="Center" HorizontalOptions="StartAndExpand" />
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
             <Button Text="Save" Clicked="OnSaveClicked" />
             <Button Text="Delete" Clicked="OnDeleteClicked" />
             <Button Text="Cancel" Clicked="OnCancelClicked" />

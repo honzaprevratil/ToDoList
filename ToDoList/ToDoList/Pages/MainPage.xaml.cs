@@ -15,18 +15,25 @@ namespace ToDoList
         public MainPage()
         {
             InitializeComponent();
+
+            // Adding items
+            /*
+ 
             var dbConnection = App.Database;
 
             TodoItemDatabase todoItemDatabase = App.Database;
             TodoItem item = new TodoItem();
-
-            // Adding items
-            /*item.Name = "Homework";
+            item.Name = "Homework";
             item.Text = "Complete To-Do list.";
             item.Done = true;
             App.Database.SaveItemAsync(item);*/
+        }
 
-            List<TodoItem> itemsFromDb = App.Database.GetItemsAsync().Result;
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            List<TodoItem> itemsFromDb = App.Database.GetItemsAsync<TodoItem>().Result;
             DebugData(itemsFromDb);
 
             ItemsCount.Text = "TO-DO-es: " + itemsFromDb.Count;
